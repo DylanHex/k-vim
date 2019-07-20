@@ -385,8 +385,10 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 
 " 分屏窗口移动, Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
+"[CONFIG] hedj add  ycm CompleteParameter for auto jump to next/prev parameter step3 start -- <c-j>,<c-k> conflict
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+"[CONFIG] hedj add  ycm CompleteParameter for auto jump to next/prev parameter step3 start -- <c-j>,<c-k> conflict
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
