@@ -167,6 +167,10 @@ Plug 'kana/vim-textobj-indent'
 " Plug 'tenfyzhong/CompleteParameter.vim'
 "[INSTALL] hedj add  ycm CompleteParameter for auto jump to next/prev parameter step1 end -- test ok here
 
+"[INSTALL] hedj add a.vim auto load a.vim's command start
+Plug 'vim-scripts/a.vim', { 'on': 'A' }
+"[INSTALL] hedj add a.vim auto load a.vim's command end
+
 if count(g:bundle_groups, 'tmux')
     " tmux
     " For tmux navigator Ctrl-hjkl
@@ -916,3 +920,15 @@ smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
 imap <c-k> <Plug>(complete_parameter#goto_previous_parameter))
 let g:complete_parameter_use_ultisnips_mapping = 1
 "[CONFIG] hedj add  ycm CompleteParameter for auto jump to next/prev parameter step2 end
+
+"[INSTALL] hedj add a.vim auto load a.vim's command start
+"Plug 'vim-scripts/a.vim', { 'on': 'A' }
+"note: if the plugin for autoload,
+"Plug 'vim-scripts/a.vim' must between
+"call plug#begin('~/.vim/bundle') and
+"call plug#end
+"[INSTALL] hedj add a.vim auto load a.vim's command end
+
+"[CONFIG] hedj add a.vim auto load a.vim's command start
+nnoremap <silent> <F12> :A<CR>
+"[CONFIG] hedj add a.vim auto load a.vim's command end
