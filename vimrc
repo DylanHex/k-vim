@@ -409,12 +409,14 @@ nnoremap <silent> <Leader>z :ZoomToggle<CR>
 
 
 " Go to home and end using capitalized directions
-noremap H ^
-noremap L $
+"hedj modified comment out start
+"noremap H ^
+"noremap L $
 
 
 " Map ; to : and save a million keystrokes 用于快速进入命令行
-nnoremap ; :
+"nnoremap ; :
+"hedj modified comment out end
 
 
 " 命令行模式增强，ctrl - a到行首， -e 到行尾
@@ -426,7 +428,9 @@ cnoremap <C-e> <End>
 
 " 搜索相关
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
+"hedj modified for space map start
+map <space> :
+"hedj modified for space map end
 " 进入搜索Use sane regexes"
 nnoremap / /\v
 vnoremap / /\v
@@ -581,14 +585,16 @@ au BufWinEnter *.php set mps-=<:>
 
 
 
-" 保存python文件时删除多余空格
-fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
-autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+"hedj modified StripTrailingWhitespaces start
+"" 保存python文件时删除多余空格
+"fun! <SID>StripTrailingWhitespaces()
+"    let l = line(".")
+"    let c = col(".")
+"    %s/\s\+$//e
+"    call cursor(l, c)
+"endfun
+"autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+"hedj modified StripTrailingWhitespaces end
 
 
 " 定义函数AutoSetFileHead，自动插入文件头
@@ -675,3 +681,9 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+
+"hedj added for no cycle search start
+set nowrapscan
+"hedj added for no cycle search start
+
+"
