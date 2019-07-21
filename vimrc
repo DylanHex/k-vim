@@ -258,7 +258,9 @@ endif
 " 设置新文件的编码为 UTF-8
 set encoding=utf-8
 " 自动判断编码时，依次尝试以下编码：
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+"[CONFIG] hedj fixed the chinese edit can not save issue start
+set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+"[CONFIG] hedj fixed the chinese edit can not save issue end
 set helplang=cn
 "set langmenu=zh_CN.UTF-8
 "set enc=2byte-gb18030
