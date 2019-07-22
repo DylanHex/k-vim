@@ -219,6 +219,16 @@ set expandtab
 " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
 set shiftround
 
+
+"[CONFIG] hedj modify for Linux kernel缩进的配置方式 start
+"通常Java的配置方式是：
+"set softtabstop=4 shiftwidth=4 expandtab
+
+"Linux kernel缩进的配置方式 -- 与gerrit处理tab键方式保持一致
+"set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+set tabstop=8 softtabstop=8 shiftwidth=4 noexpandtab " hedj modified to fit the local code style
+"[CONFIG] hedj modify for Linux kernel缩进的配置方式 end
+
 " A buffer becomes hidden when it is abandoned
 set hidden
 set wildmode=list:longest

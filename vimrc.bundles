@@ -65,7 +65,9 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 " trailingwhitespace
 " 快速去行尾空格 [, + <Space>]
-Plug 'bronson/vim-trailing-whitespace'
+"[CONFIG] hedj modified StripTrailingWhitespaces start
+"Plug 'bronson/vim-trailing-whitespace'
+"[CONFIG] hedj modified StripTrailingWhitespaces end
 " easyalign
 " 快速赋值语句对齐
 Plug 'junegunn/vim-easy-align'
@@ -528,9 +530,11 @@ endif
     let g:NERDAltDelims_python = 1
 " }}}
 
-" trailingwhitespace {{{
-    map <leader><space> :FixWhitespace<cr>
-" }}}
+"[CONFIG] hedj modified StripTrailingWhitespaces start
+"" trailingwhitespace {{{
+"    map <leader><space> :FixWhitespace<cr>
+"" }}}
+"[CONFIG] hedj modified StripTrailingWhitespaces end
 
 " easyalign {{{
     vmap <Leader>a <Plug>(EasyAlign)
