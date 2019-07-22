@@ -173,6 +173,9 @@ Plug 'kana/vim-textobj-indent'
 Plug 'vim-scripts/a.vim', { 'on': 'A' }
 "[INSTALL] hedj add a.vim auto load a.vim's command end
 
+"[INSTALL] hedj add cscope start
+Plug 'vim-scripts/cscope.vim'
+"[INSTALL] hedj add cscope end
 if count(g:bundle_groups, 'tmux')
     " tmux
     " For tmux navigator Ctrl-hjkl
@@ -916,6 +919,47 @@ endif
 " }}}
 
 "------------------------------------------- end of configs --------------------------------------------
+"[CONFIG] hedj add cscope start
+"Plug 'vim-scripts/cscope.vim'
+"
+"cscope key map start
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+"set cscopequickfix=s-,c-,d-,i-,t-,e-,g-,f-
+nmap <leader>ss :cs find s <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>sg :cs find g <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>sc :cs find c <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>st :cs find t <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>se :cs find e <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>sf :cs find f <C-R>=expand("<cfile>")<cr><cr>
+nmap <leader>si :cs find i <C-R>=expand("<cfile>")<cr><cr>
+nmap <leader>sd :cs find d <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>v :set mouse=v<cr>
+nmap <leader>a :set mouse=a<cr>
+"cscope key map end
+
+
+"vim 自动加载cscope.out数据库start
+if has("cscope")
+    set csprg=/usr/bin/cscope
+    set csto=0
+    set cst
+    set csverb
+    set cspc=3
+    "add any database in current dir
+    if filereadable("cscope.out")
+        cs add cscope.out
+    "else search cscope.out elsewhere
+    else
+        let cscope_file=findfile("cscope.out",".;")
+        let cscope_pre=matchstr(cscope_file,".*/")
+        if !empty(cscope_file) && filereadable(cscope_file)
+            exe "cs add" cscope_file cscope_pre
+        endif
+    endif
+endif
+"vim 自动加载cscope.out数据库end
+"[CONFIG] hedj add cscope end
+
 "[CONFIG] hedj add  ycm CompleteParameter for auto jump to next/prev parameter step2 start
 inoremap <silent><expr> ( complete_parameter#pre_complete("()")
 smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
