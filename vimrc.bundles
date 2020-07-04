@@ -991,6 +991,10 @@ nnoremap <silent> <F12> :A<CR>
 
 "[CONFIG] hedj add coc-nvim start
 if has('nvim')
+" hedj add ctrlspace key map for nvim start
+let g:CtrlSpaceDefaultMappingKey = "<C-space> "
+" hedj add ctrlspace key map for nvim end
+
 "map for CocList command
 nmap <Space>g :CocList grep<CR>
 nmap <Space>f :CocList files<CR>
