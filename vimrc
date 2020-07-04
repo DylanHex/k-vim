@@ -700,4 +700,8 @@ highlight SpellLocal term=underline cterm=underline
 set nowrapscan
 "hedj added for no cycle search start
 
+"hedj added for ctags autochdir start
+set tags=tags;
+set autochdir
+"hedj added for ctags autochdir end
 "
