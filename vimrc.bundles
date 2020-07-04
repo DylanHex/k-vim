@@ -303,6 +303,7 @@ if count(g:bundle_groups, 'beta')
 endif
 
 
+Plug 'Yggdroot/LeaderF'
 " Add plugins to &runtimepath
 call plug#end()
 
