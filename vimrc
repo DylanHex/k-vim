@@ -369,10 +369,13 @@ function! HideNumber()
   set number?
 endfunc
 nnoremap <F2> :call HideNumber()<CR>
-" F3 显示可打印字符开关
-nnoremap <F3> :set list! list?<CR>
-" F4 换行开关
-nnoremap <F4> :set wrap! wrap?<CR>
+
+"hedj added function setting and F3, F4 key remap start
+"" F3 显示可打印字符开关
+"nnoremap <F3> :set list! list?<CR>
+"" F4 换行开关
+"nnoremap <F4> :set wrap! wrap?<CR>
+"hedj added function setting and F3, F4 key remap end
 
 " F6 语法开关，关闭语法可以加快大文件的展示
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
@@ -704,4 +707,63 @@ set nowrapscan
 set tags=tags;
 set autochdir
 "hedj added for ctags autochdir end
+
+
+"hedj added function setting and F3, F4 key remap start
+nmap <F4> :call CreateCTag()<CR>
+nmap <F3> :call CreatePythonTag()<CR>
+
+
+"for format code ,use astyle
+nmap ffl :call FormatC()<CR>
+nmap ffn :call FormatCPP()<CR>
+nmap ffj :call FormatJAVA()<CR>
+nmap ffp :call FormatPYTHON()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" function setting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+func FormatC()
+	if &filetype == 'c' || &filetype == 'h'
+		exec "!astyle --style=linux --suffix=none  --indent=force-tab=4 --pad-comma --align-reference=name --break-blocks %"
+	endif
+endfunc
+
+func FormatCPP()
+	if &filetype == 'cpp' || &filetype == 'h'
+		exec "!astyle --style=google --suffix=none %"
+	endif
+endfunc
+
+func FormatJAVA()
+	if &filetype == 'java'
+		exec "!astyle --style=google --suffix=none  %"
+	endif
+endfunc
+
+func FormatPYTHON()
+	if &filetype == 'python'
+		exec "!yapf -p --style='{based_on_style: chromium, indent_width: 4}' -i %"
+	endif
+endfunc
+
+
+func CreatePythonTag()
+	silent exec "!find  . -name \*.py | xargs ~/.config/nvim/ptags "
+	set tags=tags;
+endfunc
+
+
+func CreateCTag()
+	silent exec "!find -iname \*.c -o  -iname \*.cpp -o -iname \*.h -o -iname \*.hpp -o -iname \*.java -o -iname \*.S -o -iname \*.s > cscope.files"
+	silent exec "!cscope -Rbqk"
+	silent exec "!ctags -R;"
+	if filereadable("cscope.out")
+	    set nocscopeverbose
+	    cs add cscope.out
+	endif
+	set tags=tags
+endfunc
+"hedj added function setting and F3, F4 key remap end
 "
