@@ -23,6 +23,14 @@
 "==========================================
 " Initial Plugin 加载插件
 "==========================================
+if has('nvim')
+"set enc=utf-8
+"set fenc=utf-8
+"set fencs=utf-8
+"export LC_ALL=en_US.UTF-8
+"export LANG=en_US.UTF-8
+"export LANGUAGE=en_US.UTF-8
+endif
 
 " 修改leader键
 let mapleader = ','

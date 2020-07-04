@@ -305,6 +305,13 @@ endif
 
 Plug 'Yggdroot/LeaderF'
 " Add plugins to &runtimepath
+
+"[INSTALL] hedj add coc-nvim start
+if has('nvim')
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
+"[INSTALL] hedj add coc-nvim end
+
 call plug#end()
 
 
@@ -981,3 +988,41 @@ let g:complete_parameter_use_ultisnips_mapping = 1
 "[CONFIG] hedj add a.vim auto load a.vim's command start
 nnoremap <silent> <F12> :A<CR>
 "[CONFIG] hedj add a.vim auto load a.vim's command end
+
+"[CONFIG] hedj add coc-nvim start
+if has('nvim')
+"map for CocList command
+nmap <Space>g :CocList grep<CR>
+nmap <Space>f :CocList files<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" coc-nvim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:coc_global_extensions=['coc-tsserver','coc-lists','coc-java',
+	    \		     'coc-python', 'coc-snippets', 'coc-pairs',
+	    \		     'coc-git', 'coc-ultisnips', 'coc-word',
+	    \		     'coc-neosnippet', 'coc-clangd']
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap rn <Plug>(coc-rename)
+nmap rr <Plug>(coc-refactor)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" coc-nvim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+endif
+"[CONFIG] hedj add coc-nvim end
