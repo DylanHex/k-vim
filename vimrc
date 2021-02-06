@@ -773,6 +773,50 @@ func CreateCTag()
 	endif
 	set tags=tags
 endfunc
+
+" Compile function
+noremap r :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'c'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		set splitbelow
+		exec "!g++ -std=c++11 % -Wall -o %<"
+		:sp
+		:res -15
+		:term ./%<
+	elseif &filetype == 'java'
+		exec "!javac %"
+		exec "!time java %<"
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
+	elseif &filetype == 'html'
+		silent! exec "!".g:mkdp_browser." % &"
+	elseif &filetype == 'markdown'
+		exec "InstantMarkdownPreview"
+	elseif &filetype == 'tex'
+		silent! exec "VimtexStop"
+		silent! exec "VimtexCompile"
+	elseif &filetype == 'dart'
+		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
+		silent! exec "CocCommand flutter.dev.openDevLog"
+	elseif &filetype == 'javascript'
+		set splitbelow
+		:sp
+		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
+	elseif &filetype == 'go'
+		set splitbelow
+		:sp
+		:term go run .
+	endif
+endfunc
+
 "hedj added function setting and F3, F4 key remap end
 "
 
@@ -898,8 +942,18 @@ vnoremap <silent> <Replace-Shortcut>  :Farr<cr>
 
 " hedj add for  dhruvasagar/vim-table-mode config start #############
 " For Markdown-compatible tables use
+" Delete Row: <Leader>tdd
+" Delete Column: <Leader>tdc
+" Insert Column: <Leader>tic
+noremap <LEADER>tm :TableModeToggle<CR>
+"let g:table_mode_disable_mappings = 1
+let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 let g:table_mode_corner='|'
 " hedj add for  dhruvasagar/vim-table-mode config end #############
 "
-" Press space twice to jump to the next '<++>' and edit it
-noremap <leader><leader> <Esc>/aaaa<CR>:nohlsearch<CR>c4l
+" hedj placeholder key map start ###########
+" Note: becuase <leader><leader> conflict with easymotion plug setting, so
+" remap the key order to <leader><space>
+" Press leader space to jump to the next '<++>' and edit it
+noremap <leader><space> <Esc>/<++><CR>:nohlsearch<CR>c4l
+" hedj placeholder key map end ###########
