@@ -881,3 +881,25 @@ nmap <M-s> <Plug>MarkdownPreviewStop
 nmap <C-p> <Plug>MarkdownPreviewToggle
 
 " hedj for  iamcco/markdown-preview.nvim config end #################
+
+" hedj for far.vim start ####################
+set lazyredraw            " improve scrolling performance when navigating through large results
+set regexpengine=1        " use old regexp engine
+set ignorecase smartcase  " ignore case only when the pattern contains no capital letters
+
+" shortcut for far.vim find
+nnoremap <silent> <Find-Shortcut>  :Farf<cr>
+vnoremap <silent> <Find-Shortcut>  :Farf<cr>
+
+" shortcut for far.vim replace
+nnoremap <silent> <Replace-Shortcut>  :Farr<cr>
+vnoremap <silent> <Replace-Shortcut>  :Farr<cr>
+" hedj for far.vim end ####################
+
+" hedj add for  dhruvasagar/vim-table-mode config start #############
+" For Markdown-compatible tables use
+let g:table_mode_corner='|'
+" hedj add for  dhruvasagar/vim-table-mode config end #############
+"
+" Press space twice to jump to the next '<++>' and edit it
+noremap <leader><leader> <Esc>/aaaa<CR>:nohlsearch<CR>c4l

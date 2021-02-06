@@ -323,6 +323,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " If you have nodejs and yarn
 "Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " hedj for  iamcco/markdown-preview.nvim config end #################
+
+Plug 'brooth/far.vim'
+Plug 'puremourning/vimspector'
+Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 
