@@ -66,6 +66,7 @@ if $FOR_VIM; then
     lnif $CURRENT_DIR/vimrc $HOME/.vimrc
     lnif $CURRENT_DIR/vimrc.bundles $HOME/.vimrc.bundles
     lnif "$CURRENT_DIR/" "$HOME/.vim"
+    lnif "$CURRENT_DIR/md-snippets.vim" "$HOME/.md-snippets.vim"
 fi
 if $FOR_NEOVIM; then
     lnif "$CURRENT_DIR/" "$HOME/.config/nvim"

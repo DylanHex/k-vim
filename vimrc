@@ -957,3 +957,10 @@ let g:table_mode_corner='|'
 " Press leader space to jump to the next '<++>' and edit it
 noremap <leader><space> <Esc>/<++><CR>:nohlsearch<CR>c4l
 " hedj placeholder key map end ###########
+
+
+" hedj add for markdown key map start #############
+if filereadable(expand("~/.md-snippets.vim"))
+  source ~/.md-snippets.vim
+endif
+" hedj add for markdown key map end #############
